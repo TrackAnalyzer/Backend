@@ -1,0 +1,59 @@
+[package]
+name = "karting_groningen_analytics"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+# Databases
+cornucopia_async = "0.4.0"
+cornucopia = "0.9.0"
+futures = "0.3.26"
+time = "0.3.20"
+
+tokio-postgres = { version = "0.7.7", features=["with-time-0_3", ] }
+postgres-types = { version = "0.2.4", features = ["derive"] }
+
+## Connection pooling
+deadpool-postgres = "0.10.4"
+
+redis= "0.22"
+
+# logging
+log = "0.4"
+fern = "0.6"
+snafu = "0.7"
+
+# http
+reqwest = { version="0.11", default-features=false, features=["blocking"] }
+
+# json
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# rocket depencies
+rocket = { version="0.5.0-rc.2", features= ["json"]}
+rocket_contrib = { version = "0.4", default-features=false, features = ["serve"] }
+
+
+# String manipulation
+regex = "1.7"
+inflections = "1.1"
+substring = "1.4.*"
+
+# Other
+chrono = { version = "0.4", features = ["serde"] }
+skillratings = { version = "0.24", features=["serde"] }
+dotenvy = "0.15"
+
+# Async
+tokio = { version = "1.23", features = ["full"] }
+tokio-cron-scheduler = { version = "0.9.3", features=["tokio-postgres"] }
+
+# custom modules
+identifiable-derive = { version = "*", path = "src/lib/identifiable-derive" }
+json-response-derive = {version = "*", path = "src/lib/json-response-derive" }
+task_queue = { version = "*", path = "src/lib/task_queue" }
+
+[build-dependencies]
+cornucopia = "0.9.0"
